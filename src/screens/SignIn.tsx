@@ -35,10 +35,14 @@ export function SignIn() {
             Acesse sua conta
           </Heading>
           <Input>
-            <InputField placeholder="E-mail" />
+            <InputField
+              placeholder="E-mail"
+              keyboardType="email-address"
+              autoCapitalize="none"
+            />
           </Input>
           <Input>
-            <InputField placeholder="Senha" />
+            <InputField placeholder="Senha" secureTextEntry />
           </Input>
         </Center>
       </VStack>
