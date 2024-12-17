@@ -1,6 +1,7 @@
-import { Image, VStack } from '../../gluestack-components'
+import { Center, Image, Text, VStack } from '../../gluestack-components'
 
 import BackgroundImg from '@assets/background.png'
+import Logo from '@assets/logo.svg'
 
 export function SignIn() {
   return (
@@ -13,6 +14,12 @@ export function SignIn() {
         w="$full"
         h={624}
       />
+      <Center mt="$32">
+        <Logo />
+        <Text fontSize="$sm" color="$gray100">
+          Treine sua mente e o seu corpo
+        </Text>
+      </Center>
     </VStack>
   )
 }
