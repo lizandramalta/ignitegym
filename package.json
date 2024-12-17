@@ -60,6 +60,7 @@
     "@legendapp/motion": "latest",
     "@types/react": "~18.3.12",
     "lucide-react-native": "^0.468.0",
+    "react-native-svg-transformer": "^1.5.0",
     "typescript": "^5.3.3"
   },
   "private": true
