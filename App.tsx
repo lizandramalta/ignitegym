@@ -6,6 +6,7 @@ import {
 } from '@expo-google-fonts/roboto'
 import { GluestackUIProvider } from './gluestack-components'
 import { Loading } from '@components/Loading'
+import { SignIn } from '@screens/SignIn'
 export default function App() {
   const [fontsLoaded] = useFonts({
     Roboto_400Regular,
@@ -14,24 +15,12 @@ export default function App() {
 
   return (
     <GluestackUIProvider>
-      {!fontsLoaded ? (
-        <Loading />
-      ) : (
-        <View
-          style={{
-            flex: 1,
-            alignItems: 'center',
-            justifyContent: 'center'
-          }}
-        >
-          <StatusBar
-            barStyle="light-content"
-            backgroundColor="transparent"
-            translucent
-          />
-          <Text>Home</Text>
-        </View>
-      )}
+      <StatusBar
+        barStyle="light-content"
+        backgroundColor="transparent"
+        translucent
+      />
+      {!fontsLoaded ? <Loading /> : <SignIn />}
     </GluestackUIProvider>
   )
 }
