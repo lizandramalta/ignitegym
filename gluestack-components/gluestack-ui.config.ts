@@ -132,18 +132,11 @@ export const gluestackUIConfig = createConfig({
       '2xl': 1.6
     },
     lineHeights: {
-      '2xs': 16,
-      xs: 18,
-      sm: 20,
-      md: 22,
-      lg: 24,
-      xl: 28,
-      '2xl': 32,
-      '3xl': 40,
-      '4xl': 48,
-      '5xl': 56,
-      '6xl': 72,
-      '7xl': 90
+      xs: 12 * 1.6,
+      sm: 14 * 1.6,
+      md: 16 * 1.6,
+      lg: 18 * 1.6,
+      xl: 20 * 1.6
     },
     fontWeights: {
       hairline: '100',
