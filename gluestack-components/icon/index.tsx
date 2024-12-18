@@ -1,7 +1,7 @@
-import React from 'react';
-import { createIcon } from '@gluestack-ui/icon';
-import { styled, AsForwarder } from '@gluestack-style/react';
-import { Path } from 'react-native-svg';
+import React from 'react'
+import { createIcon } from '@gluestack-ui/icon'
+import { styled, AsForwarder } from '@gluestack-style/react'
+import { Path } from 'react-native-svg'
 
 const StyledRoot = styled(
   AsForwarder,
@@ -14,68 +14,76 @@ const StyledRoot = styled(
           w: '$3',
           props: {
             // @ts-ignore
-            size: 12,
-          },
+            size: 12
+          }
         },
-        'xs': {
+        xs: {
           h: '$3.5',
           w: '$3.5',
           props: {
             //@ts-ignore
-            size: 14,
-          },
+            size: 14
+          }
         },
-        'sm': {
+        sm: {
           h: '$4',
           w: '$4',
           props: {
             //@ts-ignore
-            size: 16,
-          },
+            size: 16
+          }
         },
-        'md': {
+        md: {
           h: '$4.5',
           w: '$4.5',
           props: {
             //@ts-ignore
-            size: 18,
-          },
+            size: 18
+          }
         },
-        'lg': {
+        lg: {
           h: '$5',
           w: '$5',
           props: {
             //@ts-ignore
-            size: 20,
-          },
+            size: 20
+          }
         },
-        'xl': {
+        xl: {
           h: '$6',
           w: '$6',
           props: {
             //@ts-ignore
-            size: 24,
-          },
+            size: 24
+          }
         },
-      },
+        '2xl': {
+          h: '$7',
+          w: '$7',
+          props: {
+            //@ts-ignore
+            size: 28
+          }
+        }
+      }
     },
     props: {
       size: 'md',
       // @ts-ignore
-      fill: 'none',
-    },
+      fill: 'none'
+    }
   },
   {
     componentName: 'BaseIcon',
-    resolveProps: ['stroke', 'fill'],
+    resolveProps: ['stroke', 'fill']
   } as const,
   {
     propertyTokenMap: {
       stroke: 'colors',
-      fill: 'colors',
-    },
+      fill: 'colors'
+    }
   }
-);
+)
 const IconRoot = styled(
   AsForwarder,
   {
@@ -87,77 +95,85 @@ const IconRoot = styled(
           w: '$3',
           props: {
             // @ts-ignore
-            size: 12,
-          },
+            size: 12
+          }
         },
-        'xs': {
+        xs: {
           h: '$3.5',
           w: '$3.5',
           props: {
             //@ts-ignore
-            size: 14,
-          },
+            size: 14
+          }
         },
-        'sm': {
+        sm: {
           h: '$4',
           w: '$4',
           props: {
             //@ts-ignore
-            size: 16,
-          },
+            size: 16
+          }
         },
-        'md': {
+        md: {
           h: '$4.5',
           w: '$4.5',
           props: {
             //@ts-ignore
-            size: 18,
-          },
+            size: 18
+          }
         },
-        'lg': {
+        lg: {
           h: '$5',
           w: '$5',
           props: {
             //@ts-ignore
-            size: 20,
-          },
+            size: 20
+          }
         },
-        'xl': {
+        xl: {
           h: '$6',
           w: '$6',
           props: {
             //@ts-ignore
-            size: 24,
-          },
+            size: 24
+          }
         },
-      },
+        '2xl': {
+          h: '$7',
+          w: '$7',
+          props: {
+            //@ts-ignore
+            size: 28
+          }
+        }
+      }
     },
 
     props: {
       size: 'md',
       //@ts-ignore
-      fill: 'none',
-    },
+      fill: 'none'
+    }
   },
   {
-    resolveProps: ['stroke', 'fill'],
+    resolveProps: ['stroke', 'fill']
   } as const,
   {
     propertyTokenMap: {
       stroke: 'colors',
-      fill: 'colors',
-    },
+      fill: 'colors'
+    }
   }
-);
+)
 export const Icon = createIcon({
-  Root: StyledRoot,
-});
+  Root: StyledRoot
+})
 
-type ParameterTypes = Omit<Parameters<typeof createIcon>[0], 'Root'>;
+type ParameterTypes = Omit<Parameters<typeof createIcon>[0], 'Root'>
 const createIconUI = ({ ...props }: ParameterTypes) =>
-  createIcon({ Root: IconRoot, ...props });
+  createIcon({ Root: IconRoot, ...props })
 
-export { createIconUI as createIcon };
+export { createIconUI as createIcon }
 
 // All Icons
 const AddIcon = createIcon({
@@ -180,11 +196,11 @@ const AddIcon = createIcon({
         strokeLinejoin="round"
       />
     </>
-  ),
-});
+  )
+})
 
-AddIcon.displayName = 'AddIcon';
-export { AddIcon };
+AddIcon.displayName = 'AddIcon'
+export { AddIcon }
 
 export const AlertCircleIcon = createIcon({
   Root: StyledRoot,
@@ -213,10 +229,10 @@ export const AlertCircleIcon = createIcon({
         strokeLinejoin="round"
       />
     </>
-  ),
-});
+  )
+})
 
-AlertCircleIcon.displayName = 'AlertCircleIcon';
+AlertCircleIcon.displayName = 'AlertCircleIcon'
 
 const ArrowUpIcon = createIcon({
   Root: StyledRoot,
@@ -238,8 +254,8 @@ const ArrowUpIcon = createIcon({
         strokeLinejoin="round"
       />
     </>
-  ),
-});
+  )
+})
 
 const ArrowDownIcon = createIcon({
   Root: StyledRoot,
@@ -262,8 +278,8 @@ const ArrowDownIcon = createIcon({
         strokeLinejoin="round"
       />
     </>
-  ),
-});
+  )
+})
 
 const ArrowRightIcon = createIcon({
   Root: StyledRoot,
@@ -286,8 +302,8 @@ const ArrowRightIcon = createIcon({
         strokeLinejoin="round"
       />
     </>
-  ),
-});
+  )
+})
 
 const ArrowLeftIcon = createIcon({
   Root: StyledRoot,
@@ -309,8 +325,8 @@ const ArrowLeftIcon = createIcon({
         strokeLinejoin="round"
       />
     </>
-  ),
-});
+  )
+})
 
 // const ArrowTopRightIcon = createIcon({
 //   Root: StyledRoot,
@@ -324,19 +340,19 @@ const ArrowLeftIcon = createIcon({
 //   ),
 // });
 
-ArrowUpIcon.displayName = 'ArrowUpIcon';
-ArrowDownIcon.displayName = 'ArrowDownIcon';
-ArrowRightIcon.displayName = 'ArrowRightIcon';
-ArrowLeftIcon.displayName = 'ArrowLeftIcon';
+ArrowUpIcon.displayName = 'ArrowUpIcon'
+ArrowDownIcon.displayName = 'ArrowDownIcon'
+ArrowRightIcon.displayName = 'ArrowRightIcon'
+ArrowLeftIcon.displayName = 'ArrowLeftIcon'
 // ArrowTopRightIcon.displayName = 'ArrowTopRightIcon';
 
 export {
   ArrowUpIcon,
   ArrowDownIcon,
   ArrowRightIcon,
-  ArrowLeftIcon,
+  ArrowLeftIcon
   // ArrowTopRightIcon,
-};
+}
 
 const AtSignIcon = createIcon({
   Root: StyledRoot,
@@ -360,12 +376,12 @@ const AtSignIcon = createIcon({
         />
       </>
     </>
-  ),
-});
+  )
+})
 
-AtSignIcon.displayName = 'AtSignIcon';
+AtSignIcon.displayName = 'AtSignIcon'
 
-export { AtSignIcon };
+export { AtSignIcon }
 
 const BellIcon = createIcon({
   Root: StyledRoot,
@@ -387,12 +403,12 @@ const BellIcon = createIcon({
         strokeLinejoin="round"
       />
     </>
-  ),
-});
+  )
+})
 
-BellIcon.displayName = 'BellIcon';
+BellIcon.displayName = 'BellIcon'
 
-export { BellIcon };
+export { BellIcon }
 
 const CalendarDaysIcon = createIcon({
   Root: StyledRoot,
@@ -470,12 +486,12 @@ const CalendarDaysIcon = createIcon({
         strokeLinejoin="round"
       />
     </>
-  ),
-});
+  )
+})
 
-CalendarDaysIcon.displayName = 'CalendarDaysIcon';
+CalendarDaysIcon.displayName = 'CalendarDaysIcon'
 
-export { CalendarDaysIcon };
+export { CalendarDaysIcon }
 
 const CheckIcon = createIcon({
   Root: StyledRoot,
@@ -490,8 +506,8 @@ const CheckIcon = createIcon({
         strokeLinejoin="round"
       />
     </>
-  ),
-});
+  )
+})
 
 const CheckCircleIcon = createIcon({
   Root: StyledRoot,
@@ -513,13 +529,13 @@ const CheckCircleIcon = createIcon({
         strokeLinejoin="round"
       />
     </>
-  ),
-});
+  )
+})
 
-CheckIcon.displayName = 'CheckIcon';
-CheckCircleIcon.displayName = 'CheckCircleIcon';
+CheckIcon.displayName = 'CheckIcon'
+CheckCircleIcon.displayName = 'CheckCircleIcon'
 
-export { CheckIcon, CheckCircleIcon };
+export { CheckIcon, CheckCircleIcon }
 
 const ChevronUpIcon = createIcon({
   Root: StyledRoot,
@@ -535,8 +551,8 @@ const ChevronUpIcon = createIcon({
         strokeLinejoin="round"
       />
     </>
-  ),
-});
+  )
+})
 
 const ChevronDownIcon = createIcon({
   Root: StyledRoot,
@@ -551,8 +567,8 @@ const ChevronDownIcon = createIcon({
         strokeLinejoin="round"
       />
     </>
-  ),
-});
+  )
+})
 
 const ChevronLeftIcon = createIcon({
   Root: StyledRoot,
@@ -567,8 +583,8 @@ const ChevronLeftIcon = createIcon({
         strokeLinejoin="round"
       />
     </>
-  ),
-});
+  )
+})
 
 const ChevronRightIcon = createIcon({
   Root: StyledRoot,
@@ -584,8 +600,8 @@ const ChevronRightIcon = createIcon({
         strokeLinejoin="round"
       />
     </>
-  ),
-});
+  )
+})
 
 const ChevronsLeftIcon = createIcon({
   Root: StyledRoot,
@@ -608,8 +624,8 @@ const ChevronsLeftIcon = createIcon({
         strokeLinejoin="round"
       />
     </>
-  ),
-});
+  )
+})
 
 const ChevronsRightIcon = createIcon({
   Root: StyledRoot,
@@ -632,8 +648,8 @@ const ChevronsRightIcon = createIcon({
         strokeLinejoin="round"
       />
     </>
-  ),
-});
+  )
+})
 
 const ChevronsUpDownIcon = createIcon({
   Root: StyledRoot,
@@ -656,16 +672,16 @@ const ChevronsUpDownIcon = createIcon({
         strokeLinejoin="round"
       />
     </>
-  ),
-});
+  )
+})
 
-ChevronUpIcon.displayName = 'ChevronUpIcon';
-ChevronDownIcon.displayName = 'ChevronDownIcon';
-ChevronLeftIcon.displayName = 'ChevronLeftIcon';
-ChevronRightIcon.displayName = 'ChevronRightIcon';
-ChevronsLeftIcon.displayName = 'ChevronsLeftIcon';
-ChevronsRightIcon.displayName = 'ChevronsRightIcon';
-ChevronsUpDownIcon.displayName = 'ChevronsUpDownIcon';
+ChevronUpIcon.displayName = 'ChevronUpIcon'
+ChevronDownIcon.displayName = 'ChevronDownIcon'
+ChevronLeftIcon.displayName = 'ChevronLeftIcon'
+ChevronRightIcon.displayName = 'ChevronRightIcon'
+ChevronsLeftIcon.displayName = 'ChevronsLeftIcon'
+ChevronsRightIcon.displayName = 'ChevronsRightIcon'
+ChevronsUpDownIcon.displayName = 'ChevronsUpDownIcon'
 
 export {
   ChevronUpIcon,
@@ -674,8 +690,8 @@ export {
   ChevronRightIcon,
   ChevronsLeftIcon,
   ChevronsRightIcon,
-  ChevronsUpDownIcon,
-};
+  ChevronsUpDownIcon
+}
 
 const CircleIcon = createIcon({
   Root: StyledRoot,
@@ -691,12 +707,12 @@ const CircleIcon = createIcon({
         strokeLinejoin="round"
       />
     </>
-  ),
-});
+  )
+})
 
-CircleIcon.displayName = 'CircleIcon';
+CircleIcon.displayName = 'CircleIcon'
 
-export { CircleIcon };
+export { CircleIcon }
 
 const ClockIcon = createIcon({
   Root: StyledRoot,
@@ -718,12 +734,12 @@ const ClockIcon = createIcon({
         strokeLinejoin="round"
       />
     </>
-  ),
-});
+  )
+})
 
-ClockIcon.displayName = 'ClockIcon';
+ClockIcon.displayName = 'ClockIcon'
 
-export { ClockIcon };
+export { ClockIcon }
 
 const CloseIcon = createIcon({
   Root: StyledRoot,
@@ -745,8 +761,8 @@ const CloseIcon = createIcon({
         strokeLinejoin="round"
       />
     </>
-  ),
-});
+  )
+})
 
 const CloseCircleIcon = createIcon({
   Root: StyledRoot,
@@ -775,13 +791,13 @@ const CloseCircleIcon = createIcon({
         strokeLinejoin="round"
       />
     </>
-  ),
-});
+  )
+})
 
-CloseIcon.displayName = 'CloseIcon';
-CloseCircleIcon.displayName = 'CloseCircleIcon';
+CloseIcon.displayName = 'CloseIcon'
+CloseCircleIcon.displayName = 'CloseCircleIcon'
 
-export { CloseIcon, CloseCircleIcon };
+export { CloseIcon, CloseCircleIcon }
 
 const CopyIcon = createIcon({
   Root: StyledRoot,
@@ -803,12 +819,12 @@ const CopyIcon = createIcon({
         strokeLinejoin="round"
       />
     </>
-  ),
-});
+  )
+})
 
-CopyIcon.displayName = 'CopyIcon';
+CopyIcon.displayName = 'CopyIcon'
 
-export { CopyIcon };
+export { CopyIcon }
 
 const DownloadIcon = createIcon({
   Root: StyledRoot,
@@ -837,12 +853,12 @@ const DownloadIcon = createIcon({
         strokeLinejoin="round"
       />
     </>
-  ),
-});
+  )
+})
 
-DownloadIcon.displayName = 'DownloadIcon';
+DownloadIcon.displayName = 'DownloadIcon'
 
-export { DownloadIcon };
+export { DownloadIcon }
 
 const EditIcon = createIcon({
   Root: StyledRoot,
@@ -864,12 +880,12 @@ const EditIcon = createIcon({
         strokeLinejoin="round"
       />
     </>
-  ),
-});
+  )
+})
 
-EditIcon.displayName = 'EditIcon';
+EditIcon.displayName = 'EditIcon'
 
-export { EditIcon };
+export { EditIcon }
 
 const EyeIcon = createIcon({
   Root: StyledRoot,
@@ -891,10 +907,10 @@ const EyeIcon = createIcon({
         strokeLinejoin="round"
       />
     </>
-  ),
-});
+  )
+})
 
-EyeIcon.displayName = 'EyeIcon';
+EyeIcon.displayName = 'EyeIcon'
 
 const EyeOffIcon = createIcon({
   Root: StyledRoot,
@@ -930,12 +946,12 @@ const EyeOffIcon = createIcon({
         strokeLinejoin="round"
       />
     </>
-  ),
-});
+  )
+})
 
-EyeOffIcon.displayName = 'EyeOffIcon';
+EyeOffIcon.displayName = 'EyeOffIcon'
 
-export { EyeIcon, EyeOffIcon };
+export { EyeIcon, EyeOffIcon }
 
 const FavouriteIcon = createIcon({
   Root: StyledRoot,
@@ -950,12 +966,12 @@ const FavouriteIcon = createIcon({
         strokeLinejoin="round"
       />
     </>
-  ),
-});
+  )
+})
 
-FavouriteIcon.displayName = 'FavouriteIcon';
+FavouriteIcon.displayName = 'FavouriteIcon'
 
-export { FavouriteIcon };
+export { FavouriteIcon }
 
 const GlobeIcon = createIcon({
   Root: StyledRoot,
@@ -984,12 +1000,12 @@ const GlobeIcon = createIcon({
         strokeLinejoin="round"
       />
     </>
-  ),
-});
+  )
+})
 
-GlobeIcon.displayName = 'GlobeIcon';
+GlobeIcon.displayName = 'GlobeIcon'
 
-export { GlobeIcon };
+export { GlobeIcon }
 
 const GripVerticalIcon = createIcon({
   Root: StyledRoot,
@@ -1039,12 +1055,12 @@ const GripVerticalIcon = createIcon({
         strokeLinejoin="round"
       />
     </>
-  ),
-});
+  )
+})
 
-GripVerticalIcon.displayName = 'GripVerticalIcon';
+GripVerticalIcon.displayName = 'GripVerticalIcon'
 
-export { GripVerticalIcon };
+export { GripVerticalIcon }
 
 export const HelpCircleIcon = createIcon({
   Root: StyledRoot,
@@ -1073,10 +1089,10 @@ export const HelpCircleIcon = createIcon({
         strokeLinejoin="round"
       />
     </>
-  ),
-});
+  )
+})
 
-HelpCircleIcon.displayName = 'HelpCircleIcon';
+HelpCircleIcon.displayName = 'HelpCircleIcon'
 
 export const InfoIcon = createIcon({
   Root: StyledRoot,
@@ -1105,10 +1121,10 @@ export const InfoIcon = createIcon({
         strokeLinejoin="round"
       />
     </>
-  ),
-});
+  )
+})
 
-InfoIcon.displayName = 'InfoIcon';
+InfoIcon.displayName = 'InfoIcon'
 
 const LinkIcon = createIcon({
   Root: StyledRoot,
@@ -1130,9 +1146,9 @@ const LinkIcon = createIcon({
         strokeLinejoin="round"
       />
     </>
-  ),
-});
-LinkIcon.displayName = 'LinkIcon';
+  )
+})
+LinkIcon.displayName = 'LinkIcon'
 
 const ExternalLinkIcon = createIcon({
   Root: StyledRoot,
@@ -1161,12 +1177,12 @@ const ExternalLinkIcon = createIcon({
         strokeLinejoin="round"
       />
     </>
-  ),
-});
+  )
+})
 
-ExternalLinkIcon.displayName = 'ExternalLinkIcon';
+ExternalLinkIcon.displayName = 'ExternalLinkIcon'
 
-export { LinkIcon, ExternalLinkIcon };
+export { LinkIcon, ExternalLinkIcon }
 
 const LoaderIcon = createIcon({
   Root: StyledRoot,
@@ -1181,12 +1197,12 @@ const LoaderIcon = createIcon({
         strokeLinejoin="round"
       />
     </>
-  ),
-});
+  )
+})
 
-LoaderIcon.displayName = 'LoaderIcon';
+LoaderIcon.displayName = 'LoaderIcon'
 
-export { LoaderIcon };
+export { LoaderIcon }
 
 const LockIcon = createIcon({
   Root: StyledRoot,
@@ -1208,12 +1224,12 @@ const LockIcon = createIcon({
         strokeLinejoin="round"
       />
     </>
-  ),
-});
+  )
+})
 
-LockIcon.displayName = 'LockIcon';
+LockIcon.displayName = 'LockIcon'
 
-export { LockIcon };
+export { LockIcon }
 
 const MailIcon = createIcon({
   Root: StyledRoot,
@@ -1235,12 +1251,12 @@ const MailIcon = createIcon({
         strokeLinejoin="round"
       />
     </>
-  ),
-});
+  )
+})
 
-MailIcon.displayName = 'MailIcon';
+MailIcon.displayName = 'MailIcon'
 
-export { MailIcon };
+export { MailIcon }
 
 export const MenuIcon = createIcon({
   Root: StyledRoot,
@@ -1269,10 +1285,10 @@ export const MenuIcon = createIcon({
         strokeLinejoin="round"
       />
     </>
-  ),
-});
+  )
+})
 
-MenuIcon.displayName = 'MenuIcon';
+MenuIcon.displayName = 'MenuIcon'
 
 const MessageCircleIcon = createIcon({
   Root: StyledRoot,
@@ -1287,12 +1303,12 @@ const MessageCircleIcon = createIcon({
         strokeLinejoin="round"
       />
     </>
-  ),
-});
+  )
+})
 
-MessageCircleIcon.displayName = 'MessageCircleIcon';
+MessageCircleIcon.displayName = 'MessageCircleIcon'
 
-export { MessageCircleIcon };
+export { MessageCircleIcon }
 
 export const MoonIcon = createIcon({
   Root: StyledRoot,
@@ -1307,10 +1323,10 @@ export const MoonIcon = createIcon({
         strokeLinejoin="round"
       />
     </>
-  ),
-});
+  )
+})
 
-MoonIcon.displayName = 'MoonIcon';
+MoonIcon.displayName = 'MoonIcon'
 
 const PaperclipIcon = createIcon({
   Root: StyledRoot,
@@ -1325,12 +1341,12 @@ const PaperclipIcon = createIcon({
         strokeLinejoin="round"
       />
     </>
-  ),
-});
+  )
+})
 
-PaperclipIcon.displayName = 'PaperclipIcon';
+PaperclipIcon.displayName = 'PaperclipIcon'
 
-export { PaperclipIcon };
+export { PaperclipIcon }
 
 const PhoneIcon = createIcon({
   Root: StyledRoot,
@@ -1345,12 +1361,12 @@ const PhoneIcon = createIcon({
         strokeLinejoin="round"
       />
     </>
-  ),
-});
+  )
+})
 
-PhoneIcon.displayName = 'PhoneIcon';
+PhoneIcon.displayName = 'PhoneIcon'
 
-export { PhoneIcon };
+export { PhoneIcon }
 
 const PlayIcon = createIcon({
   Root: StyledRoot,
@@ -1372,12 +1388,12 @@ const PlayIcon = createIcon({
         strokeLinejoin="round"
       />
     </>
-  ),
-});
+  )
+})
 
-PlayIcon.displayName = 'PlayIcon';
+PlayIcon.displayName = 'PlayIcon'
 
-export { PlayIcon };
+export { PlayIcon }
 
 export const RemoveIcon = createIcon({
   Root: StyledRoot,
@@ -1392,10 +1408,10 @@ export const RemoveIcon = createIcon({
         strokeLinejoin="round"
       />
     </>
-  ),
-});
+  )
+})
 
-RemoveIcon.displayName = 'RemoveIcon';
+RemoveIcon.displayName = 'RemoveIcon'
 
 const RepeatIcon = createIcon({
   Root: StyledRoot,
@@ -1431,10 +1447,10 @@ const RepeatIcon = createIcon({
         strokeLinejoin="round"
       />
     </>
-  ),
-});
+  )
+})
 
-RepeatIcon.displayName = 'RepeatIcon';
+RepeatIcon.displayName = 'RepeatIcon'
 
 const Repeat1Icon = createIcon({
   Root: StyledRoot,
@@ -1477,12 +1493,12 @@ const Repeat1Icon = createIcon({
         strokeLinejoin="round"
       />
     </>
-  ),
-});
+  )
+})
 
-Repeat1Icon.displayName = 'Repeat1Icon';
+Repeat1Icon.displayName = 'Repeat1Icon'
 
-export { RepeatIcon, Repeat1Icon };
+export { RepeatIcon, Repeat1Icon }
 
 export const SearchIcon = createIcon({
   Root: StyledRoot,
@@ -1504,10 +1520,10 @@ export const SearchIcon = createIcon({
         strokeLinejoin="round"
       />
     </>
-  ),
-});
+  )
+})
 
-SearchIcon.displayName = 'SearchIcon';
+SearchIcon.displayName = 'SearchIcon'
 
 const SettingsIcon = createIcon({
   Root: StyledRoot,
@@ -1529,12 +1545,12 @@ const SettingsIcon = createIcon({
         strokeLinejoin="round"
       />
     </>
-  ),
-});
+  )
+})
 
-SettingsIcon.displayName = 'SettingsIcon';
+SettingsIcon.displayName = 'SettingsIcon'
 
-export { SettingsIcon };
+export { SettingsIcon }
 
 const ShareIcon = createIcon({
   Root: StyledRoot,
@@ -1577,12 +1593,12 @@ const ShareIcon = createIcon({
         strokeLinejoin="round"
       />
     </>
-  ),
-});
+  )
+})
 
-ShareIcon.displayName = 'ShareIcon';
+ShareIcon.displayName = 'ShareIcon'
 
-export { ShareIcon };
+export { ShareIcon }
 
 const SlashIcon = createIcon({
   Root: StyledRoot,
@@ -1604,12 +1620,12 @@ const SlashIcon = createIcon({
         strokeLinejoin="round"
       />
     </>
-  ),
-});
+  )
+})
 
-SlashIcon.displayName = 'SlashIcon';
+SlashIcon.displayName = 'SlashIcon'
 
-export { SlashIcon };
+export { SlashIcon }
 
 const StarIcon = createIcon({
   Root: StyledRoot,
@@ -1624,12 +1640,12 @@ const StarIcon = createIcon({
         strokeLinejoin="round"
       />
     </>
-  ),
-});
+  )
+})
 
-StarIcon.displayName = 'StarIcon';
+StarIcon.displayName = 'StarIcon'
 
-export { StarIcon };
+export { StarIcon }
 
 export const SunIcon = createIcon({
   Root: StyledRoot,
@@ -1700,10 +1716,10 @@ export const SunIcon = createIcon({
         strokeLinejoin="round"
       />
     </>
-  ),
-});
+  )
+})
 
-SunIcon.displayName = 'SunIcon';
+SunIcon.displayName = 'SunIcon'
 
 const ThreeDotsIcon = createIcon({
   Root: StyledRoot,
@@ -1732,12 +1748,12 @@ const ThreeDotsIcon = createIcon({
         strokeLinejoin="round"
       />
     </>
-  ),
-});
+  )
+})
 
-ThreeDotsIcon.displayName = 'ThreeDotsIcon';
+ThreeDotsIcon.displayName = 'ThreeDotsIcon'
 
-export { ThreeDotsIcon };
+export { ThreeDotsIcon }
 
 const TrashIcon = createIcon({
   Root: StyledRoot,
@@ -1766,12 +1782,12 @@ const TrashIcon = createIcon({
         strokeLinejoin="round"
       />
     </>
-  ),
-});
+  )
+})
 
-TrashIcon.displayName = 'TrashIcon';
+TrashIcon.displayName = 'TrashIcon'
 
-export { TrashIcon };
+export { TrashIcon }
 
 const UnlockIcon = createIcon({
   Root: StyledRoot,
@@ -1793,9 +1809,9 @@ const UnlockIcon = createIcon({
         strokeLinejoin="round"
       />
     </>
-  ),
-});
+  )
+})
 
-UnlockIcon.displayName = 'UnlockIcon';
+UnlockIcon.displayName = 'UnlockIcon'
 
-export { UnlockIcon };
+export { UnlockIcon }

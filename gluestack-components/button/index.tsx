@@ -249,6 +249,14 @@ const StyledIcon = styled(
             //@ts-ignore
             size: 24
           }
+        },
+        '2xl': {
+          h: '$7',
+          w: '$7',
+          props: {
+            //@ts-ignore
+            size: 28
+          }
         }
       }
     },

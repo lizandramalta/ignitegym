@@ -40,7 +40,7 @@ export function HomeHeader() {
         </VStack>
       </HStack>
       <Button variant="link" onPress={handleSignOut}>
-        <ButtonIcon as={LogOut} color="$gray200" size="xl" />
+        <ButtonIcon as={LogOut} color="$gray200" size="2xl" />
       </Button>
     </HStack>
   )
