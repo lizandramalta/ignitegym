@@ -26,6 +26,8 @@ export const gluestackUIConfig = createConfig({
   } as const,
   tokens: {
     colors: {
+      white: '#FFFFFF',
+
       green500: '#00B37E',
       green600: '#16a34a',
       green700: '#00875F',
@@ -38,6 +40,7 @@ export const gluestackUIConfig = createConfig({
       gray600: '#202024',
       gray700: '#121214',
       gray900: '#121214',
+
       red500: '#F75A68'
     },
     space: {
