@@ -17,6 +17,9 @@ const StyledRoot = styled(
     variants: {
       variant: {
         link: {
+          px: '$0',
+          py: '$0',
+          w: 'auto',
           _text: {
             color: '$green700'
           },

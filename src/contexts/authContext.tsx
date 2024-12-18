@@ -12,7 +12,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null)
 
   function signIn(email: string, password: string) {
-    setUser({ email, name: 'Teste', avatar: 'Teste' })
+    setUser({ email, name: 'Teste', avatar: '' })
   }
 
   function signOut() {
