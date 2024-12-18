@@ -17,7 +17,10 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 export function SignIn() {
   return (
     <VStack flex={1} bgColor="$gray700">
-      <KeyboardAwareScrollView contentContainerStyle={{ flexGrow: 1 }}>
+      <KeyboardAwareScrollView
+        contentContainerStyle={{ flexGrow: 1 }}
+        showsVerticalScrollIndicator={false}
+      >
         <Image
           source={BackgroundImg}
           defaultSource={BackgroundImg}
