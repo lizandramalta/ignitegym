@@ -12,9 +12,16 @@ import {
 import BackgroundImg from '@assets/background.png'
 import Logo from '@assets/logo.svg'
 import { Button } from '@components/Button'
+import { useNavigation } from '@react-navigation/native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 export function SignUp() {
+  const navigation = useNavigation()
+
+  function handleGoBack() {
+    navigation.goBack()
+  }
+
   return (
     <VStack flex={1} bgColor="$gray700">
       <KeyboardAwareScrollView
@@ -67,7 +74,7 @@ export function SignUp() {
             </Button>
           </Center>
           <Center gap="$3" pb={66}>
-            <Button variant="outline">
+            <Button variant="outline" onPress={handleGoBack}>
               <ButtonText>Voltar para o login</ButtonText>
             </Button>
           </Center>

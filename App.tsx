@@ -5,8 +5,9 @@ import {
   Roboto_700Bold
 } from '@expo-google-fonts/roboto'
 import { GluestackUIProvider } from './gluestack-components'
+
 import { Loading } from '@components/Loading'
-import { SignIn } from '@screens/SignIn'
+import { Routes } from '@routes/index'
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -21,7 +22,7 @@ export default function App() {
         backgroundColor="transparent"
         translucent
       />
-      {!fontsLoaded ? <Loading /> : <SignIn />}
+      {!fontsLoaded ? <Loading /> : <Routes />}
     </GluestackUIProvider>
   )
 }

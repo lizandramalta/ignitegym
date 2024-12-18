@@ -12,9 +12,17 @@ import {
 import BackgroundImg from '@assets/background.png'
 import Logo from '@assets/logo.svg'
 import { Button } from '@components/Button'
+import { useNavigation } from '@react-navigation/native'
+import { AuthNavigatorRoutesProps } from '@routes/auth.routes'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 export function SignIn() {
+  const navigation = useNavigation<AuthNavigatorRoutesProps>()
+
+  function handleNewAccount() {
+    navigation.navigate('signUp')
+  }
+
   return (
     <VStack flex={1} bgColor="$gray700">
       <KeyboardAwareScrollView
@@ -64,7 +72,7 @@ export function SignIn() {
             <Text color="$gray100" fontSize="$md" lineHeight="$md">
               Ainda não tem acesso?
             </Text>
-            <Button variant="outline">
+            <Button variant="outline" onPress={handleNewAccount}>
               <ButtonText>Criar conta</ButtonText>
             </Button>
           </Center>
