@@ -12,12 +12,18 @@ import {
 import BackgroundImg from '@assets/background.png'
 import Logo from '@assets/logo.svg'
 import { Button } from '@components/Button'
+import { useAuth } from '@hooks/useAuth'
 import { useNavigation } from '@react-navigation/native'
 import { AuthNavigatorRoutesProps } from '@routes/auth.routes'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 export function SignIn() {
   const navigation = useNavigation<AuthNavigatorRoutesProps>()
+  const { signIn } = useAuth()
+
+  function handleSignIn() {
+    signIn('teste', 'teste')
+  }
 
   function handleNewAccount() {
     navigation.navigate('signUp')
@@ -64,7 +70,7 @@ export function SignIn() {
             <Input>
               <InputField placeholder="Senha" secureTextEntry />
             </Input>
-            <Button mt="$4">
+            <Button mt="$4" onPress={handleSignIn}>
               <ButtonText>Acessar</ButtonText>
             </Button>
           </Center>
