@@ -13,11 +13,13 @@ import ProfileSvg from '@assets/profile.svg'
 import { gluestackUIConfig } from '../../gluestack-components/gluestack-ui.config'
 import { Platform } from 'react-native'
 
-type AppRoutes = {
+export type AppRoutes = {
   home: undefined
   history: undefined
   profile: undefined
-  exercise: undefined
+  exercise: {
+    exercise: Exercise
+  }
 }
 
 export type AppNavigatorRoutesProps = BottomTabNavigationProp<AppRoutes>

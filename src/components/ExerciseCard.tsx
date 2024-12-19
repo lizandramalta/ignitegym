@@ -1,15 +1,15 @@
-import { TouchableOpacity } from 'react-native'
+import { TouchableOpacity, TouchableOpacityProps } from 'react-native'
 import { Heading, HStack, Icon, Image, Text } from '../../gluestack-components'
 import { VStack } from '@gluestack-ui/themed'
 import { ChevronRight } from 'lucide-react-native'
 
 type Props = {
   data: Exercise
-}
+} & TouchableOpacityProps
 
-export function ExerciseCard({ data }: Props) {
+export function ExerciseCard({ data, ...rest }: Props) {
   return (
-    <TouchableOpacity>
+    <TouchableOpacity {...rest}>
       <HStack
         bg="$gray500"
         rounded="$lg"

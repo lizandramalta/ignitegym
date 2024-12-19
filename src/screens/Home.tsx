@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react'
 import { Heading, HStack, Text, VStack } from '../../gluestack-components'
 import { FlatList } from 'react-native'
 import { ExerciseCard } from '@components/ExerciseCard'
+import { useNavigation } from '@react-navigation/native'
+import { AppNavigatorRoutesProps } from '@routes/app.routes'
 
 const exercisesMock: Exercise[] = [
   {
@@ -63,12 +65,17 @@ const exercisesMock: Exercise[] = [
 ]
 
 export function Home() {
+  const navigation = useNavigation<AppNavigatorRoutesProps>()
   const [groups, setGroups] = useState(['Costas', 'Bíceps', 'Tríceps', 'Ombro'])
   const [selectedGroup, setSelectedGroup] = useState(groups[0])
   const [exercises, setExercises] = useState<Exercise[]>([])
 
   function handleSelectGroup(group: string) {
     setSelectedGroup(group)
+  }
+
+  function handleExerciseDetails(exercise: Exercise) {
+    navigation.navigate('exercise', { exercise })
   }
 
   useEffect(() => {
@@ -95,7 +102,12 @@ export function Home() {
         </HStack>
         <FlatList
           data={exercises}
-          renderItem={({ item }) => <ExerciseCard data={item} />}
+          renderItem={({ item }) => (
+            <ExerciseCard
+              data={item}
+              onPress={() => handleExerciseDetails(item)}
+            />
+          )}
           keyExtractor={(item) => item.id}
           showsVerticalScrollIndicator={false}
           contentContainerStyle={{
