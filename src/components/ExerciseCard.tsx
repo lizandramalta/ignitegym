@@ -2,6 +2,7 @@ import { TouchableOpacity, TouchableOpacityProps } from 'react-native'
 import { Heading, HStack, Icon, Image, Text } from '../../gluestack-components'
 import { VStack } from '@gluestack-ui/themed'
 import { ChevronRight } from 'lucide-react-native'
+import { ExerciseImageDefault } from './ExerciseImageDefault'
 
 type Props = {
   data: Exercise
@@ -19,15 +20,20 @@ export function ExerciseCard({ data, ...rest }: Props) {
         gap="$4"
         alignItems="center"
       >
-        <Image
-          source={{ uri: data.thumb }}
-          defaultSource={{ uri: data.thumb }}
-          resizeMode="cover"
-          rounded="$md"
-          h={67}
-          w={67}
-          alt={`Imagem do execício ${data.name}`}
-        />
+        {!!data.thumb ? (
+          <Image
+            source={{ uri: data.thumb }}
+            defaultSource={{ uri: data.thumb }}
+            resizeMode="cover"
+            rounded="$md"
+            h={67}
+            w={67}
+            alt={`Imagem do execício ${data.name}`}
+          />
+        ) : (
+          <ExerciseImageDefault />
+        )}
+
         <VStack gap="$0.5" flex={1}>
           <Heading
             numberOfLines={1}
