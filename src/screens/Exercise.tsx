@@ -8,6 +8,7 @@ import {
   HStack,
   Heading,
   Image,
+  ScrollView,
   Text,
   VStack
 } from '../../gluestack-components'
@@ -50,45 +51,52 @@ export function Exercise() {
           </HStack>
         </HStack>
       </VStack>
-      <VStack mt="$8" gap="$3" px="$8">
-        <Image
-          source={{ uri: params.exercise.demo }}
-          defaultSource={{ uri: params.exercise.demo }}
-          w={364}
-          h={364}
-          rounded="$lg"
-          alt="Exercício"
-          resizeMode="cover"
-        />
-        <VStack
-          gap="$6"
-          px="$4"
-          pt="$5"
-          pb="$4"
-          rounded="$lg"
-          bgColor="$gray600"
-        >
-          <HStack justifyContent="space-around" alignItems="center">
-            <HStack alignItems="center" gap="$2">
-              <Series />
-              <Text color="$gray200" fontSize="$lg" lineHeight="$lg">
-                {params.exercise.series}{' '}
-                {params.exercise.series === 1 ? 'série' : 'séries'}
-              </Text>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ paddingBottom: 32 }}
+      >
+        <VStack mt="$8" gap="$3" px="$8">
+          <Image
+            source={{ uri: params.exercise.demo }}
+            defaultSource={{ uri: params.exercise.demo }}
+            w={364}
+            h={364}
+            rounded="$lg"
+            alt="Exercício"
+            resizeMode="cover"
+          />
+          <VStack
+            gap="$6"
+            px="$4"
+            pt="$5"
+            pb="$4"
+            rounded="$lg"
+            bgColor="$gray600"
+          >
+            <HStack justifyContent="space-around" alignItems="center">
+              <HStack alignItems="center" gap="$2">
+                <Series />
+                <Text color="$gray200" fontSize="$lg" lineHeight="$lg">
+                  {params.exercise.series}{' '}
+                  {params.exercise.series === 1 ? 'série' : 'séries'}
+                </Text>
+              </HStack>
+              <HStack alignItems="center" gap="$2">
+                <Repetition />
+                <Text color="$gray200" fontSize="$lg" lineHeight="$lg">
+                  {params.exercise.repetitions}{' '}
+                  {params.exercise.repetitions === 1
+                    ? 'repetição'
+                    : 'repetições'}
+                </Text>
+              </HStack>
             </HStack>
-            <HStack alignItems="center" gap="$2">
-              <Repetition />
-              <Text color="$gray200" fontSize="$lg" lineHeight="$lg">
-                {params.exercise.repetitions}{' '}
-                {params.exercise.repetitions === 1 ? 'repetição' : 'repetições'}
-              </Text>
-            </HStack>
-          </HStack>
-          <Button>
-            <ButtonText>Marcar como realizado</ButtonText>
-          </Button>
+            <Button>
+              <ButtonText>Marcar como realizado</ButtonText>
+            </Button>
+          </VStack>
         </VStack>
-      </VStack>
+      </ScrollView>
     </VStack>
   )
 }
