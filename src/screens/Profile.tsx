@@ -44,7 +44,7 @@ export function Profile() {
               <InputField placeholder="Nova senha" secureTextEntry />
             </Input>
           </VStack>
-          <Button>
+          <Button mb="$4">
             <ButtonText>Atualizar</ButtonText>
           </Button>
         </VStack>

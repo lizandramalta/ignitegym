@@ -56,15 +56,17 @@ export function Exercise() {
         contentContainerStyle={{ paddingBottom: 32 }}
       >
         <VStack mt="$8" gap="$3" px="$8">
-          <Image
-            source={{ uri: params.exercise.demo }}
-            defaultSource={{ uri: params.exercise.demo }}
-            w={364}
-            h={364}
-            rounded="$lg"
-            alt="Exercício"
-            resizeMode="cover"
-          />
+          {!!params.exercise.demo && (
+            <Image
+              source={{ uri: params.exercise.demo }}
+              defaultSource={{ uri: params.exercise.demo }}
+              w={364}
+              h={364}
+              rounded="$lg"
+              alt="Exercício"
+              resizeMode="cover"
+            />
+          )}
           <VStack
             gap="$6"
             px="$4"

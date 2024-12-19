@@ -49,7 +49,7 @@ export function SignIn() {
             Treine sua mente e o seu corpo
           </Text>
         </Center>
-        <VStack px="$10" flex={1}>
+        <VStack px="$10" flex={1} mt="$4">
           <Center flex={1} gap="$4">
             <Heading
               fontFamily="$heading"
@@ -74,7 +74,7 @@ export function SignIn() {
               <ButtonText>Acessar</ButtonText>
             </Button>
           </Center>
-          <Center gap="$3" pb={66}>
+          <Center gap="$3" pb={66} mt="$4">
             <Text color="$gray100" fontSize="$md" lineHeight="$md">
               Ainda não tem acesso?
             </Text>

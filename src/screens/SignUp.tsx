@@ -51,7 +51,7 @@ export function SignUp() {
               lineHeight="$xl"
               mb={4}
             >
-              Cire sua conta
+              Crie sua conta
             </Heading>
             <Input>
               <InputField placeholder="Nome" keyboardType="email-address" />
@@ -73,7 +73,7 @@ export function SignUp() {
               <ButtonText>Criar e acessar</ButtonText>
             </Button>
           </Center>
-          <Center gap="$3" pb={66}>
+          <Center gap="$3" pb={66} mt="$4">
             <Button variant="outline" onPress={handleGoBack}>
               <ButtonText>Voltar para o login</ButtonText>
             </Button>

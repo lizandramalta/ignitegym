@@ -12,6 +12,7 @@ import HistorySvg from '@assets/history.svg'
 import ProfileSvg from '@assets/profile.svg'
 import { gluestackUIConfig } from '../../gluestack-components/gluestack-ui.config'
 import { Platform } from 'react-native'
+import { Center } from '../../gluestack-components'
 
 export type AppRoutes = {
   home: undefined
@@ -40,7 +41,8 @@ export function AppRoutes() {
         tabBarStyle: {
           backgroundColor: tokens.colors.gray600,
           borderTopWidth: 0,
-          height: 96,
+          height: Platform.OS === 'android' ? 'auto' : 96,
+          alignItems: 'center',
           paddingBottom: tokens.space['10'],
           paddingTop: tokens.space['6']
         }
