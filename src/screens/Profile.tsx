@@ -38,10 +38,10 @@ export function Profile() {
           </Heading>
           <VStack gap="$4" mb="$8">
             <Input bgColor="$gray600">
-              <InputField placeholder="Senha antiga" />
+              <InputField placeholder="Senha antiga" secureTextEntry />
             </Input>
             <Input bgColor="$gray600">
-              <InputField placeholder="Nova senha" />
+              <InputField placeholder="Nova senha" secureTextEntry />
             </Input>
           </VStack>
           <Button>
