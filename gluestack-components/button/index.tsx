@@ -21,7 +21,7 @@ const StyledRoot = styled(
           py: '$0',
           w: 'auto',
           _text: {
-            color: '$green700'
+            color: '$green500'
           },
           ':active': {
             _text: {
