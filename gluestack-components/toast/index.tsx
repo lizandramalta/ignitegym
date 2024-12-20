@@ -1,10 +1,10 @@
-import { createToast, createToastHook } from '@gluestack-ui/toast';
+import { createToast, createToastHook } from '@gluestack-ui/toast'
 import {
   AnimatePresence,
-  AnimatedView,
-} from '@gluestack-style/animation-resolver';
-import { styled } from '@gluestack-style/react';
-import { Text, View } from 'react-native';
+  AnimatedView
+} from '@gluestack-style/animation-resolver'
+import { styled } from '@gluestack-style/react'
+import { Text, View } from 'react-native'
 
 const StyledRoot = styled(
   View,
@@ -16,77 +16,73 @@ const StyledRoot = styled(
     variants: {
       action: {
         error: {
-          bg: '$backgroundError',
-          borderColor: '$error300',
+          bg: '$red500',
+          borderColor: '$red500',
 
           _icon: {
-            color: '$error500',
-          },
+            color: '$error500'
+          }
         },
         warning: {
           bg: '$backgroundWarning',
           borderColor: '$warning300',
 
           _icon: {
-            color: '$warning500',
-          },
+            color: '$warning500'
+          }
         },
         success: {
-          bg: '$backgroundSuccess',
-          borderColor: '$success300',
+          bg: '$green500',
+          borderColor: '$green500',
 
           _icon: {
-            color: '$success500',
-          },
+            color: '$success500'
+          }
         },
         info: {
           bg: '$backgroundInfo',
           borderColor: '$info300',
 
           _icon: {
-            color: '$info500',
-          },
+            color: '$info500'
+          }
         },
         attention: {
           bg: '$backgroundMuted',
           borderColor: '$secondary300',
 
           _icon: {
-            color: '$secondary600',
-          },
-        },
+            color: '$secondary600'
+          }
+        }
       },
 
       variant: {
         solid: {},
         outline: {
           borderWidth: '$1',
-          bg: '$white',
+          bg: '$white'
         },
         accent: {
-          borderLeftWidth: '$4',
-        },
-      },
+          borderLeftWidth: '$4'
+        }
+      }
     },
     m: '$3',
-
-    _web: {
-      pointerEvents: 'auto',
-    },
     defaultProps: {
       hardShadow: '5',
       variant: 'solid',
-      action: 'attention',
-    },
+      action: 'attention'
+    }
   },
   { descendantStyle: ['_icon', '_title', '_description'] }
-);
+)
 const StyledTitle = styled(
   Text,
   {
-    color: '$text700',
+    color: '$white',
     fontWeight: '$medium',
-    fontFamily: '$body',
+    fontFamily: '$heading',
     fontStyle: 'normal',
     letterSpacing: '$md',
 
@@ -96,97 +92,74 @@ const StyledTitle = styled(
           props: {
             // @ts-ignore
             numberOfLines: 1,
-            ellipsizeMode: 'tail',
-          },
-        },
+            ellipsizeMode: 'tail'
+          }
+        }
       },
       bold: {
         true: {
-          fontWeight: '$bold',
-        },
+          fontWeight: '$bold'
+        }
       },
       underline: {
         true: {
-          textDecorationLine: 'underline',
-        },
+          textDecorationLine: 'underline'
+        }
       },
       strikeThrough: {
         true: {
-          textDecorationLine: 'line-through',
-        },
+          textDecorationLine: 'line-through'
+        }
       },
       size: {
-        '2xs': {
-          fontSize: '$2xs',
-        },
-        'xs': {
-          fontSize: '$xs',
+        xs: {
+          fontSize: '$xs'
         },
 
-        'sm': {
-          fontSize: '$sm',
+        sm: {
+          fontSize: '$sm'
         },
 
-        'md': {
-          fontSize: '$md',
+        md: {
+          fontSize: '$md'
         },
 
-        'lg': {
-          fontSize: '$lg',
+        lg: {
+          fontSize: '$lg'
         },
 
-        'xl': {
-          fontSize: '$xl',
-        },
-
-        '2xl': {
-          fontSize: '$2xl',
-        },
-
-        '3xl': {
-          fontSize: '$3xl',
-        },
-
-        '4xl': {
-          fontSize: '$4xl',
-        },
-
-        '5xl': {
-          fontSize: '$5xl',
-        },
-
-        '6xl': {
-          fontSize: '$6xl',
-        },
+        xl: {
+          fontSize: '$xl'
+        }
       },
       sub: {
         true: {
-          fontSize: '$xs',
-        },
+          fontSize: '$xs'
+        }
       },
       italic: {
         true: {
-          fontStyle: 'italic',
-        },
+          fontStyle: 'italic'
+        }
       },
       highlight: {
         true: {
-          bg: '$yellow500',
-        },
-      },
+          bg: '$yellow500'
+        }
+      }
     },
 
     props: {
-      size: 'md',
-    },
+      size: 'md'
+    }
   },
   { ancestorStyle: ['_title'] }
-);
+)
 
 const StyledDescription = styled(
   Text,
   {
-    color: '$text700',
+    color: '$white',
     fontWeight: '$normal',
     fontFamily: '$body',
     fontStyle: 'normal',
@@ -198,100 +171,77 @@ const StyledDescription = styled(
           props: {
             // @ts-ignore
             numberOfLines: 1,
-            ellipsizeMode: 'tail',
-          },
-        },
+            ellipsizeMode: 'tail'
+          }
+        }
       },
       bold: {
         true: {
-          fontWeight: '$bold',
-        },
+          fontWeight: '$bold'
+        }
       },
       underline: {
         true: {
-          textDecorationLine: 'underline',
-        },
+          textDecorationLine: 'underline'
+        }
       },
       strikeThrough: {
         true: {
-          textDecorationLine: 'line-through',
-        },
+          textDecorationLine: 'line-through'
+        }
       },
       size: {
-        '2xs': {
-          fontSize: '$2xs',
-        },
-        'xs': {
-          fontSize: '$xs',
+        xs: {
+          fontSize: '$xs'
         },
 
-        'sm': {
-          fontSize: '$sm',
+        sm: {
+          fontSize: '$sm'
         },
 
-        'md': {
-          fontSize: '$md',
+        md: {
+          fontSize: '$md'
         },
 
-        'lg': {
-          fontSize: '$lg',
+        lg: {
+          fontSize: '$lg'
         },
 
-        'xl': {
-          fontSize: '$xl',
-        },
-
-        '2xl': {
-          fontSize: '$2xl',
-        },
-
-        '3xl': {
-          fontSize: '$3xl',
-        },
-
-        '4xl': {
-          fontSize: '$4xl',
-        },
-
-        '5xl': {
-          fontSize: '$5xl',
-        },
-
-        '6xl': {
-          fontSize: '$6xl',
-        },
+        xl: {
+          fontSize: '$xl'
+        }
       },
       sub: {
         true: {
-          fontSize: '$xs',
-        },
+          fontSize: '$xs'
+        }
       },
       italic: {
         true: {
-          fontStyle: 'italic',
-        },
+          fontStyle: 'italic'
+        }
       },
       highlight: {
         true: {
-          bg: '$yellow500',
-        },
-      },
+          bg: '$yellow500'
+        }
+      }
     },
 
     props: {
-      size: 'sm',
-    },
+      size: 'sm'
+    }
   },
   { ancestorStyle: ['_description'] }
-);
-const AnimationWrapper = styled(AnimatedView, {});
+)
+const AnimationWrapper = styled(AnimatedView, {})
 
-export const useToast = createToastHook(AnimationWrapper, AnimatePresence);
+export const useToast = createToastHook(AnimationWrapper, AnimatePresence)
 
 export const Toast = createToast({
   Root: StyledRoot,
   Title: StyledTitle,
-  Description: StyledDescription,
-});
-export const ToastTitle = Toast.Title;
-export const ToastDescription = Toast.Description;
+  Description: StyledDescription
+})
+export const ToastTitle = Toast.Title
+export const ToastDescription = Toast.Description
