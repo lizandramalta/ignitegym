@@ -1,26 +1,55 @@
+import { Button } from '@components/Button'
+import { Input } from '@components/Input'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { useNavigation } from '@react-navigation/native'
+import { Controller, useForm } from 'react-hook-form'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import * as yup from 'yup'
 import {
   ButtonText,
   Center,
   Heading,
   Image,
-  Input,
-  InputField,
   Text,
   VStack
 } from '../../gluestack-components'
 
 import BackgroundImg from '@assets/background.png'
 import Logo from '@assets/logo.svg'
-import { Button } from '@components/Button'
-import { useNavigation } from '@react-navigation/native'
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+
+type FormDataProps = {
+  name: string
+  email: string
+  password: string
+  password_confirm: string
+}
+
+const signUpSchema = yup.object({
+  name: yup.string().required('Informe o nome.'),
+  email: yup.string().required('Informe o email.').email('E-mail inválido.'),
+  password: yup
+    .string()
+    .min(6, 'A senha deve ter no mínimo 6 caracteres.')
+    .required('Informe a senha.'),
+  password_confirm: yup
+    .string()
+    .required('Confirme a senha.')
+    .oneOf([yup.ref('password'), ''], 'As senhas não conferem.')
+})
 
 export function SignUp() {
   const navigation = useNavigation()
+  const {
+    control,
+    handleSubmit,
+    formState: { errors }
+  } = useForm<FormDataProps>({ resolver: yupResolver(signUpSchema) })
 
   function handleGoBack() {
     navigation.goBack()
   }
+
+  function handleSignUp(data: FormDataProps) {}
 
   return (
     <VStack flex={1} bgColor="$gray700">
@@ -53,23 +82,67 @@ export function SignUp() {
             >
               Crie sua conta
             </Heading>
-            <Input>
-              <InputField placeholder="Nome" keyboardType="email-address" />
-            </Input>
-            <Input>
-              <InputField
-                placeholder="E-mail"
-                keyboardType="email-address"
-                autoCapitalize="none"
-              />
-            </Input>
-            <Input>
-              <InputField placeholder="Senha" secureTextEntry />
-            </Input>
-            <Input>
-              <InputField placeholder="Confirme sua senha" secureTextEntry />
-            </Input>
-            <Button mt="$4">
+
+            <Controller
+              control={control}
+              name="name"
+              render={({ field: { onChange, value } }) => (
+                <Input
+                  placeholder="Nome"
+                  onChangeText={onChange}
+                  value={value}
+                  isInvalid={!!errors.name?.message}
+                  errorMessage={errors.name?.message}
+                />
+              )}
+            />
+            <Controller
+              control={control}
+              name="email"
+              render={({ field: { onChange, value } }) => (
+                <Input
+                  placeholder="E-mail"
+                  keyboardType="email-address"
+                  autoCapitalize="none"
+                  onChangeText={onChange}
+                  value={value}
+                  isInvalid={!!errors.email?.message}
+                  errorMessage={errors.email?.message}
+                />
+              )}
+            />
+            <Controller
+              control={control}
+              name="password"
+              render={({ field: { onChange, value } }) => (
+                <Input
+                  placeholder="Senha"
+                  secureTextEntry
+                  onChangeText={onChange}
+                  value={value}
+                  isInvalid={!!errors.password?.message}
+                  errorMessage={errors.password?.message}
+                />
+              )}
+            />
+            <Controller
+              control={control}
+              name="password_confirm"
+              render={({ field: { onChange, value } }) => (
+                <Input
+                  placeholder="Confirme sua senha"
+                  secureTextEntry
+                  onChangeText={onChange}
+                  value={value}
+                  onSubmitEditing={handleSubmit(handleSignUp)}
+                  returnKeyType="send"
+                  isInvalid={!!errors.password_confirm?.message}
+                  errorMessage={errors.password_confirm?.message}
+                ></Input>
+              )}
+            />
+
+            <Button mt="$4" onPress={handleSubmit(handleSignUp)}>
               <ButtonText>Criar e acessar</ButtonText>
             </Button>
           </Center>
