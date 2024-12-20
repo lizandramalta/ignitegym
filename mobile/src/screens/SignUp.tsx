@@ -16,6 +16,10 @@ import {
 
 import BackgroundImg from '@assets/background.png'
 import Logo from '@assets/logo.svg'
+import { UserService } from '@services/userService'
+import { AppError } from '@utils/AppError'
+import { useToast } from '@hooks/useToast'
+import { useAuth } from '@hooks/useAuth'
 
 type FormDataProps = {
   name: string
@@ -44,12 +48,27 @@ export function SignUp() {
     handleSubmit,
     formState: { errors }
   } = useForm<FormDataProps>({ resolver: yupResolver(signUpSchema) })
+  const toast = useToast()
+  const { signIn } = useAuth()
 
   function handleGoBack() {
     navigation.goBack()
   }
 
-  function handleSignUp(data: FormDataProps) {}
+  async function handleSignUp(data: FormDataProps) {
+    try {
+      await UserService.createUser(data)
+      signIn(data.email, data.password)
+    } catch (error) {
+      if (error instanceof AppError) {
+        toast.show({
+          id: 'create-user-toast',
+          title: error.message,
+          action: 'error'
+        })
+      }
+    }
+  }
 
   return (
     <VStack flex={1} bgColor="$gray700">

@@ -1,3 +1,6 @@
+import { useToast } from '@hooks/useToast'
+import { AuthService } from '@services/authService'
+import { AppError } from '@utils/AppError'
 import { createContext, ReactNode, useState } from 'react'
 
 type AuthContextProps = {
@@ -11,9 +14,21 @@ export const AuthContext = createContext<AuthContextProps | null>(null)
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null)
+  const toast = useToast()
 
-  function signIn(email: string, password: string) {
-    setUser({ id: '', email, name: 'Teste', avatar: '' })
+  async function signIn(email: string, password: string) {
+    try {
+      const response = await AuthService.signIn({ email, password })
+      setUser(response.user)
+    } catch (error) {
+      if (error instanceof AppError) {
+        toast.show({
+          id: 'sign-in-toast',
+          title: error.message,
+          action: 'error'
+        })
+      }
+    }
   }
 
   function signOut() {
