@@ -1,6 +1,5 @@
-import { AxiosError } from 'axios'
-import { api } from './api'
 import { AppError } from '@utils/AppError'
+import { api } from './api'
 
 type CreateUserDTO = {
   name: string
@@ -10,16 +9,11 @@ type CreateUserDTO = {
 
 async function createUser(data: CreateUserDTO) {
   try {
-    await api.post('/users', data, {
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      }
-    })
+    await api.post('/users', data)
   } catch (error) {
     console.log(error)
-    if (error instanceof AxiosError) {
-      throw new AppError(error.response?.data.message)
+    if (error instanceof AppError) {
+      throw error
     }
     throw new AppError(
       'Não foi possível criar uma conta. Tente novamente mais tarde.'

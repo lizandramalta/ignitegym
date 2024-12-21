@@ -1,6 +1,5 @@
-import { AxiosError } from 'axios'
-import { api } from './api'
 import { AppError } from '@utils/AppError'
+import { api } from './api'
 
 type SignInRequestDTO = {
   email: string
@@ -15,17 +14,12 @@ type SignInResponseDTO = {
 
 async function signIn(data: SignInRequestDTO): Promise<SignInResponseDTO> {
   try {
-    const { data: response } = await api.post('/sessions', data, {
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      }
-    })
+    const { data: response } = await api.post('/sessions', data)
     return response
   } catch (error) {
     console.log(error)
-    if (error instanceof AxiosError) {
-      throw new AppError(error.response?.data.message)
+    if (error instanceof AppError) {
+      throw error
     }
     throw new AppError(
       'Não foi possível efetivar o login. Tente novamente mais tarde.'
