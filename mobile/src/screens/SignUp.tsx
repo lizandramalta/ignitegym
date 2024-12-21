@@ -20,6 +20,7 @@ import { UserService } from '@services/userService'
 import { AppError } from '@utils/AppError'
 import { useToast } from '@hooks/useToast'
 import { useAuth } from '@hooks/useAuth'
+import { useState } from 'react'
 
 type FormDataProps = {
   name: string
@@ -42,6 +43,7 @@ const signUpSchema = yup.object({
 })
 
 export function SignUp() {
+  const [isLoading, setIsLoading] = useState(false)
   const navigation = useNavigation()
   const {
     control,
@@ -57,6 +59,7 @@ export function SignUp() {
 
   async function handleSignUp(data: FormDataProps) {
     try {
+      setIsLoading(true)
       await UserService.createUser(data)
       signIn(data.email, data.password)
     } catch (error) {
@@ -161,7 +164,11 @@ export function SignUp() {
               )}
             />
 
-            <Button mt="$4" onPress={handleSubmit(handleSignUp)}>
+            <Button
+              mt="$4"
+              onPress={handleSubmit(handleSignUp)}
+              isLoading={isLoading}
+            >
               <ButtonText>Criar e acessar</ButtonText>
             </Button>
           </Center>

@@ -18,6 +18,7 @@ import {
 
 import BackgroundImg from '@assets/background.png'
 import Logo from '@assets/logo.svg'
+import { useState } from 'react'
 
 type FormDataProps = {
   email: string
@@ -30,6 +31,7 @@ const signInSchema = yup.object({
 })
 
 export function SignIn() {
+  const [isLoading, setIsLoading] = useState(false)
   const navigation = useNavigation<AuthNavigatorRoutesProps>()
   const { signIn } = useAuth()
   const {
@@ -39,6 +41,7 @@ export function SignIn() {
   } = useForm<FormDataProps>({ resolver: yupResolver(signInSchema) })
 
   function handleSignIn({ email, password }: FormDataProps) {
+    setIsLoading(true)
     signIn(email, password)
   }
 
@@ -108,7 +111,11 @@ export function SignIn() {
               )}
             />
 
-            <Button mt="$4" onPress={handleSubmit(handleSignIn)}>
+            <Button
+              mt="$4"
+              onPress={handleSubmit(handleSignIn)}
+              isLoading={isLoading}
+            >
               <ButtonText>Acessar</ButtonText>
             </Button>
           </Center>

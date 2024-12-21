@@ -10,7 +10,7 @@ type Props = ComponentProps<typeof GluestackButton> & {
 
 export function Button({ isLoading, children, ...rest }: Props) {
   return (
-    <GluestackButton {...rest}>
+    <GluestackButton disabled={isLoading} {...rest}>
       {isLoading ? <ButtonSpinner /> : children}
     </GluestackButton>
   )
