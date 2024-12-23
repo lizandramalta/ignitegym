@@ -13,7 +13,8 @@ type Props = ComponentProps<typeof GluestackButton> & {
 export function Group({ isActive, label, ...rest }: Props) {
   return (
     <Button
-      w="$24"
+      w="auto"
+      minWidth="$24"
       p="$3"
       rounded="$sm"
       bg="$gray600"
