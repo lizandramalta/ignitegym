@@ -1,2 +1,4 @@
+const TOKEN_STORAGE = '@gymignite:token'
 const USER_STORAGE = '@gymignite:user'
-export { USER_STORAGE }
+
+export { TOKEN_STORAGE, USER_STORAGE }

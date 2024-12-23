@@ -1,5 +1,7 @@
 import { useToast } from '@hooks/useToast'
+import { api } from '@services/api'
 import { AuthService } from '@services/authService'
+import { AuthStorage } from '@storage/authStorage'
 import { UserStorage } from '@storage/userStorage'
 import { AppError } from '@utils/AppError'
 import { createContext, ReactNode, useEffect, useState } from 'react'
@@ -19,10 +21,35 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [isLoadingUserData, setIsLoadingUserData] = useState(false)
   const toast = useToast()
 
+  function userAndTokenUpdate(user: User, token: string) {
+    api.defaults.headers.common['Authorization'] = `Bearer ${token}`
+
+    setUser(user)
+  }
+
+  async function storageUserAndTokenSave(user: User, token: string) {
+    try {
+      setIsLoadingUserData(true)
+      await UserStorage.save(user)
+      await AuthStorage.saveToken(token)
+    } catch (error) {
+      if (error instanceof AppError) {
+        toast.show({
+          id: 'sign-in-toast',
+          title: error.message,
+          action: 'error'
+        })
+      }
+    } finally {
+      setIsLoadingUserData(false)
+    }
+  }
+
   async function signIn(email: string, password: string) {
     try {
       const response = await AuthService.signIn({ email, password })
-      setUser(response.user)
+      await storageUserAndTokenSave(response.user, response.token)
+      userAndTokenUpdate(response.user, response.token)
     } catch (error) {
       if (error instanceof AppError) {
         toast.show({
@@ -39,6 +66,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setIsLoadingUserData(false)
       setUser(null)
       await UserStorage.remove()
+      await AuthStorage.removeToken()
     } catch (error) {
       console.log(error)
     } finally {
@@ -50,6 +78,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     if (user) {
       const updatedUser = { ...user, avatar: uri }
       setUser(updatedUser)
+      UserStorage.save(updatedUser)
     }
   }
 
@@ -57,9 +86,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     try {
       setIsLoadingUserData(true)
       const userLogged = await UserStorage.get()
+      const token = await AuthStorage.getToken()
 
-      if (userLogged) {
-        setUser(userLogged)
+      if (token && userLogged) {
+        userAndTokenUpdate(userLogged, token)
       }
     } catch (error) {
       console.log(error)

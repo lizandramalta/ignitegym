@@ -15,6 +15,13 @@ type SignInResponseDTO = {
 async function signIn(data: SignInRequestDTO): Promise<SignInResponseDTO> {
   try {
     const { data: response } = await api.post('/sessions', data)
+
+    if (!response.token) {
+      throw new AppError(
+        'Não foi possível efetivar o login. Tente novamente mais tarde.'
+      )
+    }
+
     return response
   } catch (error) {
     console.log(error)
