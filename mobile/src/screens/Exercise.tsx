@@ -16,6 +16,7 @@ import {
 import BodySvg from '@assets/body.svg'
 import Repetition from '@assets/repetitions.svg'
 import Series from '@assets/series.svg'
+import { api } from '@services/api'
 
 type ExerciseRouteProps = RouteProp<AppRoutes, 'exercise'>
 
@@ -33,10 +34,9 @@ export function Exercise() {
         <Button variant="link" w="$6" onPress={handleGoBack}>
           <ButtonIcon as={ArrowLeft} size="2xl" color="$green500" />
         </Button>
-        <HStack gap="$2" alignItems="center">
+        <HStack alignItems="center" justifyContent="space-between">
           <Heading
             numberOfLines={1}
-            flex={1}
             color="$gray100"
             fontSize="$xl"
             lineHeight="$xl"
@@ -45,8 +45,13 @@ export function Exercise() {
           </Heading>
           <HStack alignItems="center" gap="$0.5">
             <BodySvg />
-            <Text color="$gray200" fontSize="$md" lineHeight="$md">
-              {params.exercise.group}
+            <Text
+              color="$gray200"
+              fontSize="$md"
+              lineHeight="$md"
+              textTransform="capitalize"
+            >
+              {params.exercise.group.toLocaleUpperCase()}
             </Text>
           </HStack>
         </HStack>
@@ -58,8 +63,12 @@ export function Exercise() {
         <VStack mt="$8" gap="$3" px="$8">
           {!!params.exercise.demo && (
             <Image
-              source={{ uri: params.exercise.demo }}
-              defaultSource={{ uri: params.exercise.demo }}
+              source={{
+                uri: `${api.defaults.baseURL}/exercise/demo/${params.exercise.demo}`
+              }}
+              defaultSource={{
+                uri: `${api.defaults.baseURL}/exercise/demo/${params.exercise.demo}`
+              }}
               w={364}
               h={364}
               rounded="$lg"

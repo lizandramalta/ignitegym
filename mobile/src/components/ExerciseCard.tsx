@@ -3,6 +3,7 @@ import { Heading, HStack, Icon, Image, Text } from '../../gluestack-components'
 import { VStack } from '@gluestack-ui/themed'
 import { ChevronRight } from 'lucide-react-native'
 import { ExerciseImageDefault } from './ExerciseImageDefault'
+import { api } from '@services/api'
 
 type Props = {
   data: Exercise
@@ -22,8 +23,12 @@ export function ExerciseCard({ data, ...rest }: Props) {
       >
         {!!data.thumb ? (
           <Image
-            source={{ uri: data.thumb }}
-            defaultSource={{ uri: data.thumb }}
+            source={{
+              uri: `${api.defaults.baseURL}/exercise/thumb/${data.thumb}`
+            }}
+            defaultSource={{
+              uri: `${api.defaults.baseURL}/exercise/thumb/${data.thumb}`
+            }}
             resizeMode="cover"
             rounded="$md"
             h={67}

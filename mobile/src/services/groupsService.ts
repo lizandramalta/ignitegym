@@ -11,7 +11,7 @@ async function getGroups(): Promise<string[]> {
       throw error
     }
     throw new AppError(
-      'Ocorreu um problema nas listagem das categorias. Tente novamente mais tarde.'
+      'Não foi possível carregar as categorias. Tente novamente mais tarde.'
     )
   }
 }
