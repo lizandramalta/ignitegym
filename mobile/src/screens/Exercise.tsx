@@ -1,8 +1,13 @@
+import { Button } from '@components/Button'
+import { useToast } from '@hooks/useToast'
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native'
-import { AppRoutes } from '@routes/app.routes'
+import { AppNavigatorRoutesProps, AppRoutes } from '@routes/app.routes'
+import { api } from '@services/api'
+import { HistoryService } from '@services/historyService'
+import { AppError } from '@utils/AppError'
 import { ArrowLeft } from 'lucide-react-native'
+import { useState } from 'react'
 import {
-  Button,
   ButtonIcon,
   ButtonText,
   HStack,
@@ -16,16 +21,35 @@ import {
 import BodySvg from '@assets/body.svg'
 import Repetition from '@assets/repetitions.svg'
 import Series from '@assets/series.svg'
-import { api } from '@services/api'
 
 type ExerciseRouteProps = RouteProp<AppRoutes, 'exercise'>
 
 export function Exercise() {
   const { params } = useRoute<ExerciseRouteProps>()
-  const navigation = useNavigation()
+  const navigation = useNavigation<AppNavigatorRoutesProps>()
+  const [isLoading, setIsLoading] = useState(false)
+  const toast = useToast()
 
   function handleGoBack() {
     navigation.goBack()
+  }
+
+  async function handleRegisterExerciseHistory() {
+    try {
+      setIsLoading(true)
+      await HistoryService.registerExerciseHistory(params.exercise.id)
+      navigation.navigate('history')
+    } catch (error) {
+      if (error instanceof AppError) {
+        toast.show({
+          id: 'register-exercise-toast',
+          title: error.message,
+          action: 'error'
+        })
+      }
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   return (
@@ -102,7 +126,10 @@ export function Exercise() {
                 </Text>
               </HStack>
             </HStack>
-            <Button>
+            <Button
+              isLoading={isLoading}
+              onPress={handleRegisterExerciseHistory}
+            >
               <ButtonText>Marcar como realizado</ButtonText>
             </Button>
           </VStack>
