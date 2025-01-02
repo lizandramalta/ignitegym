@@ -12,6 +12,7 @@ type AuthContextProps = {
   signIn: (email: string, password: string) => void
   signOut: () => void
   updateUserPhoto: (uri: string) => void
+  updateUserName: (name: string) => void
 }
 
 export const AuthContext = createContext<AuthContextProps | null>(null)
@@ -82,6 +83,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   }
 
+  function updateUserName(name: string) {
+    if (user) {
+      const updatedUser = { ...user, name }
+      setUser(updatedUser)
+      UserStorage.save(updatedUser)
+    }
+  }
+
   async function loadUserData() {
     try {
       setIsLoadingUserData(true)
@@ -105,7 +114,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   return (
     <AuthContext.Provider
-      value={{ signIn, signOut, updateUserPhoto, user, isLoadingUserData }}
+      value={{
+        signIn,
+        signOut,
+        updateUserPhoto,
+        updateUserName,
+        user,
+        isLoadingUserData
+      }}
     >
       {children}
     </AuthContext.Provider>

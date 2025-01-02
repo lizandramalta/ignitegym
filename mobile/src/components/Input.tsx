@@ -10,13 +10,15 @@ import {
 type Props = {
   containerBgColor?: string
   errorMessage?: string
-  isInvalid: boolean
+  isInvalid?: boolean
+  isDisabled?: boolean
 } & ComponentProps<typeof InputField>
 
 export function Input({
   containerBgColor,
   errorMessage,
   isInvalid,
+  isDisabled,
   ...rest
 }: Props) {
   const [invalid, setInvalid] = useState<boolean>()
@@ -44,6 +46,7 @@ export function Input({
       <GluestackInput
         bgColor={containerBgColor ? containerBgColor : '$gray700'}
         isInvalid={invalid}
+        isDisabled={isDisabled}
       >
         <InputField {...rest} onFocus={handleFocus} onBlur={handleBlur} />
       </GluestackInput>
