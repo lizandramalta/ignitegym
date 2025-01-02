@@ -3,10 +3,10 @@ import { Heading, HStack, Text, VStack } from '../../gluestack-components'
 type Props = {
   group: string
   name: string
-  time: string
+  hour: string
 }
 
-export function HistoryCard({ group, name, time }: Props) {
+export function HistoryCard({ group, name, hour }: Props) {
   return (
     <HStack
       w="$full"
@@ -37,7 +37,7 @@ export function HistoryCard({ group, name, time }: Props) {
         </Text>
       </VStack>
       <Text fontSize="$lg" lineHeight="$lg" color="$gray300">
-        {time}
+        {hour}
       </Text>
     </HStack>
   )
