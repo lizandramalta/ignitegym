@@ -1,19 +1,19 @@
+import { Button } from '@components/Button'
 import { Input } from '@components/Input'
 import { ScreenHeader } from '@components/ScreenHeader'
 import { UserPhoto } from '@components/UserPhoto'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useAuth } from '@hooks/useAuth'
 import { useToast } from '@hooks/useToast'
+import { UserService } from '@services/userService'
 import { AppError } from '@utils/AppError'
 import { ImageUtils } from '@utils/imageUtils'
+import { useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
+import { Keyboard } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import * as yup from 'yup'
 import { ButtonText, Center, Heading, VStack } from '../../gluestack-components'
-import { useState } from 'react'
-import { UserService } from '@services/userService'
-import { Button } from '@components/Button'
-import { Keyboard } from 'react-native'
 
 type FormDataProps = {
   name: string
@@ -67,7 +67,16 @@ export function Profile() {
   async function handleUpdateUserPhoto() {
     try {
       const photoUri = await ImageUtils.pickImage()
-      if (photoUri) updateUserPhoto(photoUri)
+      if (photoUri && user) {
+        const { avatar } = await UserService.updateUserPhoto(
+          ImageUtils.getImageFileInfo(user, photoUri)
+        )
+        updateUserPhoto(avatar)
+      }
+      toast.show({
+        id: 'user-photo-success-toast',
+        title: 'Foto atualizada.'
+      })
     } catch (error) {
       if (error instanceof AppError) {
         return toast.show({

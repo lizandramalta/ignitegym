@@ -6,6 +6,16 @@ type PhotoInfo = {
   size: number
 }
 
+function getImageFileInfo(user: User, uri: string) {
+  const fileExtension = uri.split('.').pop()
+
+  return {
+    name: `${user.name.trim()}.${fileExtension}`.toLowerCase(),
+    uri,
+    type: `image/${fileExtension}`
+  }
+}
+
 async function pickImage() {
   const result = await ImagePicker.launchImageLibraryAsync({
     mediaTypes: 'images',
@@ -34,5 +44,6 @@ async function pickImage() {
 }
 
 export const ImageUtils = Object.freeze({
-  pickImage
+  pickImage,
+  getImageFileInfo
 })

@@ -13,6 +13,10 @@ type UpdateUserRequestDTO = {
   old_password?: string | null
 }
 
+type UpdateUserPhotoResponseDTO = {
+  avatar: string
+}
+
 async function createUser(data: CreateUserRequestDTO) {
   try {
     await api.post('/users', data)
@@ -41,7 +45,32 @@ async function updateUser(data: UpdateUserRequestDTO) {
   }
 }
 
+async function updateUserPhoto(
+  photoFile: any
+): Promise<UpdateUserPhotoResponseDTO> {
+  try {
+    const userPhotoUploadForm = new FormData()
+    userPhotoUploadForm.append('avatar', photoFile)
+
+    const { data } = await api.patch('/users/avatar', userPhotoUploadForm, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    })
+    return data
+  } catch (error) {
+    console.log(error)
+    if (error instanceof AppError) {
+      throw error
+    }
+    throw new AppError(
+      'Não foi alterar a foto do usuário. Tente novamente mais tarde.'
+    )
+  }
+}
+
 export const UserService = Object.freeze({
   createUser,
-  updateUser
+  updateUser,
+  updateUserPhoto
 })
