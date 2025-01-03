@@ -25,7 +25,7 @@ async function pickImage() {
   })
 
   if (result.canceled) {
-    return
+    return ''
   }
 
   const photoUri = result.assets[0].uri

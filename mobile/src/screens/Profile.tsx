@@ -67,7 +67,10 @@ export function Profile() {
   async function handleUpdateUserPhoto() {
     try {
       const photoUri = await ImageUtils.pickImage()
-      if (photoUri && user) {
+      if (!photoUri) {
+        return
+      }
+      if (user) {
         const { avatar } = await UserService.updateUserPhoto(
           ImageUtils.getImageFileInfo(user, photoUri)
         )
