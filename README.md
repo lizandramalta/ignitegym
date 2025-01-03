@@ -13,7 +13,7 @@ O Ignite Gym é uma aplicação mobile desenvolvida para proporcionar uma experi
 - Acessar um histórico detalhado de exercícios realizados, organizados por dia e com registro do horário de conclusão.
 - Personalizar seu perfil, incluindo a adição de uma foto, alteração de nome e atualização de senha.
 
-![Demonstração do app](assets/images/demonstration.gif)
+![Demonstração do app](assets/demonstration.gif)
 
 ## Tecnologias utilizadas
 
