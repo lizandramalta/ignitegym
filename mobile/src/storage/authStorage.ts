@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { AppError } from '@utils/AppError'
-import { TOKEN_STORAGE } from './storage.config'
+import { REFRESH_TOKEN_STORAGE, TOKEN_STORAGE } from './storage.config'
 
 async function saveToken(token: string) {
   try {
@@ -30,8 +30,39 @@ async function removeToken() {
   }
 }
 
+async function saveRefreshToken(token: string) {
+  try {
+    await AsyncStorage.setItem(REFRESH_TOKEN_STORAGE, token)
+  } catch (error) {
+    console.log(error)
+    throw new AppError('Ocorreu um erro. Tente novamente mais tarde.')
+  }
+}
+
+async function getRefreshToken(): Promise<string> {
+  try {
+    const token = await AsyncStorage.getItem(REFRESH_TOKEN_STORAGE)
+
+    return token ?? ''
+  } catch (error) {
+    console.log(error)
+    throw new AppError('Ocorreu um erro. Tente novamente mais tarde.')
+  }
+}
+
+async function removeRefreshToken() {
+  try {
+    await AsyncStorage.removeItem(REFRESH_TOKEN_STORAGE)
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export const AuthStorage = Object.freeze({
   saveToken,
   getToken,
-  removeToken
+  removeToken,
+  saveRefreshToken,
+  getRefreshToken,
+  removeRefreshToken
 })

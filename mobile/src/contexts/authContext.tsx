@@ -28,11 +28,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setUser(user)
   }
 
-  async function storageUserAndTokenSave(user: User, token: string) {
+  async function storageUserAndTokenSave(
+    user: User,
+    token: string,
+    refreshToken: string
+  ) {
     try {
       setIsLoadingUserData(true)
       await UserStorage.save(user)
       await AuthStorage.saveToken(token)
+      await AuthStorage.saveRefreshToken(refreshToken)
     } catch (error) {
       if (error instanceof AppError) {
         toast.show({
@@ -49,7 +54,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   async function signIn(email: string, password: string) {
     try {
       const response = await AuthService.signIn({ email, password })
-      await storageUserAndTokenSave(response.user, response.token)
+      await storageUserAndTokenSave(
+        response.user,
+        response.token,
+        response.refresh_token
+      )
       userAndTokenUpdate(response.user, response.token)
     } catch (error) {
       if (error instanceof AppError) {
@@ -111,6 +120,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     loadUserData()
   }, [])
+
+  useEffect(() => {
+    const subscribe = api.registerInterceptTokenManager(signOut)
+    return () => {
+      subscribe
+    }
+  }, [signOut])
 
   return (
     <AuthContext.Provider

@@ -43,6 +43,7 @@ export function SignIn() {
   function handleSignIn({ email, password }: FormDataProps) {
     setIsLoading(true)
     signIn(email, password)
+    setIsLoading(false)
   }
 
   function handleNewAccount() {
